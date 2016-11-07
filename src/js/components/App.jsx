@@ -1,6 +1,7 @@
 const React = require('react');
 
 const ImageCaption = require('./ImageCaption');
+const Layout = require('./Layout')
 
 var imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -21,12 +22,11 @@ const App = React.createClass({
       <main>
         <h1>My first React App</h1>
         <hr/>
-        <h2>Testing ImageCaption</h2>
-        	<ImageCaption key={41} source="http://placekitten.com/g/210/210" text="This is a kittenz!"/>
-        <hr/>
-        <h2>Render Image Method</h2>
-        	<div>{this.renderImage(imageList)}</div>
-        <hr/>
+        <h2>Testing Layout</h2>
+        <Layout>
+        	<h2>About us</h2>
+        	<p>We are <a href='https://facebook.github.io/react/'>React</a> developers!</p>
+        </Layout>
       </main>
     );
   }
