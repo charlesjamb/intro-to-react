@@ -1,6 +1,6 @@
 const React = require('react');
 
-var ImageCaption = React.createClass({
+const ImageCaption = React.createClass({
 	propTypes: {
 		source: React.PropTypes.string.isRequired,
 		text: React.PropTypes.string.isRequired

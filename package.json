@@ -1,7 +1,7 @@
 {
   "name": "introToReact",
   "version": "1.0.0",
-  "description": "Learning React",
+  "description": "Learning React through https://github.com/ziad-saab/react-intro-workshop",
   "main": "server.js",
   "repository": {
     "url": "git@github.com:charlesjamb/introToReact.git",

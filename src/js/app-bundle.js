@@ -21430,13 +21430,14 @@
 	
 	var ImageCaption = __webpack_require__(173);
 	var Layout = __webpack_require__(174);
+	var GuessTheNumber = __webpack_require__(175);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
 	var App = React.createClass({
 	  displayName: 'App',
 	
-	  renderImage: function renderImage(arr) {
+	  _renderImage: function _renderImage(arr) {
 	    return React.createElement(
 	      'div',
 	      null,
@@ -21463,22 +21464,8 @@
 	      React.createElement(
 	        Layout,
 	        null,
-	        React.createElement(
-	          'h2',
-	          null,
-	          'About us'
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          'We are ',
-	          React.createElement(
-	            'a',
-	            { href: 'https://facebook.github.io/react/' },
-	            'React'
-	          ),
-	          ' developers!'
-	        )
+	        React.createElement(GuessTheNumber, { numberToGuess: 50 }),
+	        React.createElement('br', null)
 	      )
 	    );
 	  }
@@ -21564,6 +21551,47 @@
 	});
 	
 	module.exports = Layout;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var GuessTheNumber = React.createClass({
+		displayName: 'GuessTheNumber',
+	
+		propTypes: {
+			numberToGuess: React.PropTypes.number.isRequired
+		},
+		_handleButtonClick: function _handleButtonClick() {
+			var numToGuess = this.props.numberToGuess;
+			var numGuessed = +this.refs.userGuess.value;
+			if (numGuessed == numToGuess) {
+				alert('Savage!');
+			} else if (numGuessed > numToGuess) {
+				alert('Try lower!');
+			} else {
+				alert('Try higher!');
+			}
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement('input', { type: 'text', ref: 'userGuess' }),
+				React.createElement(
+					'button',
+					{ onClick: this._handleButtonClick },
+					'Click me!'
+				)
+			);
+		}
+	});
+	
+	module.exports = GuessTheNumber;
 
 /***/ }
 /******/ ]);
