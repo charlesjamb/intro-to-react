@@ -21430,9 +21430,20 @@
 	
 	var ImageCaption = __webpack_require__(173);
 	
+	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
+	
 	var App = React.createClass({
 	  displayName: 'App',
 	
+	  renderImage: function renderImage(arr) {
+	    return React.createElement(
+	      'div',
+	      null,
+	      arr.map(function (item) {
+	        return React.createElement(ImageCaption, { key: item.id, source: item.source, text: item.text });
+	      })
+	    );
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'main',
@@ -21448,7 +21459,18 @@
 	        null,
 	        'Testing ImageCaption'
 	      ),
-	      React.createElement(ImageCaption, { source: 'http://placekitten.com/g/210/210', text: 'This is a kittenz!' }),
+	      React.createElement(ImageCaption, { key: 41, source: 'http://placekitten.com/g/210/210', text: 'This is a kittenz!' }),
+	      React.createElement('hr', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Render Image Method'
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        this.renderImage(imageList)
+	      ),
 	      React.createElement('hr', null)
 	    );
 	  }
@@ -21475,7 +21497,7 @@
 			return React.createElement(
 				'figure',
 				null,
-				React.createElement('img', { src: this.props.source }),
+				React.createElement('img', { key: this.props.id, src: this.props.source }),
 				React.createElement(
 					'figcaption',
 					null,

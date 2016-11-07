@@ -1,6 +1,6 @@
 const React = require('react');
 
-const ImageCaption = React.createClass({
+var ImageCaption = React.createClass({
 	propTypes: {
 		source: React.PropTypes.string.isRequired,
 		text: React.PropTypes.string.isRequired
@@ -8,7 +8,7 @@ const ImageCaption = React.createClass({
 	render: function() {
 		return (
 			<figure>
-				<img src={this.props.source}/>
+				<img key={this.props.id} src={this.props.source}/>
 				<figcaption>
 					{this.props.text}
 				</figcaption>
