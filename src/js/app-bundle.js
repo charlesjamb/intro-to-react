@@ -21428,6 +21428,8 @@
 	
 	var React = __webpack_require__(1);
 	
+	var ImageCaption = __webpack_require__(173);
+	
 	var App = React.createClass({
 	  displayName: 'App',
 	
@@ -21440,12 +21442,50 @@
 	        null,
 	        'My first React App'
 	      ),
+	      React.createElement('hr', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Testing ImageCaption'
+	      ),
+	      React.createElement(ImageCaption, { source: 'http://placekitten.com/g/210/210', text: 'This is a kittenz!' }),
 	      React.createElement('hr', null)
 	    );
 	  }
 	});
 	
 	module.exports = App;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var ImageCaption = React.createClass({
+		displayName: 'ImageCaption',
+	
+		propTypes: {
+			source: React.PropTypes.string.isRequired,
+			text: React.PropTypes.string.isRequired
+		},
+		render: function render() {
+			return React.createElement(
+				'figure',
+				null,
+				React.createElement('img', { src: this.props.source }),
+				React.createElement(
+					'figcaption',
+					null,
+					this.props.text
+				)
+			);
+		}
+	});
+	
+	module.exports = ImageCaption;
 
 /***/ }
 /******/ ]);
