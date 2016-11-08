@@ -8,7 +8,7 @@ const GuessTheNumber = React.createClass({
   		let numToGuess = this.props.numberToGuess;
   		let numGuessed = +this.refs.userGuess.value;
 		if (numGuessed == numToGuess) {
-			alert('Savage!');
+			alert('Savage!');	
 		}
 		else if (numGuessed > numToGuess) {
 			alert('Try lower!');

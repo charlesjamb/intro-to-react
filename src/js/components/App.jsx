@@ -3,6 +3,7 @@ const React = require('react');
 const ImageCaption = require('./ImageCaption');
 const Layout = require('./Layout');
 const GuessTheNumber = require('./GuessTheNumber');
+const YouClicked = require('./YouClicked');
 
 let imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -25,8 +26,7 @@ const App = React.createClass({
         <hr/>
         <h2>Testing Layout</h2>
         <Layout>
-        	<GuessTheNumber numberToGuess={50}/>
-        	<br/>
+        	<YouClicked/>
         </Layout>
       </main>
     );

@@ -21431,6 +21431,7 @@
 	var ImageCaption = __webpack_require__(173);
 	var Layout = __webpack_require__(174);
 	var GuessTheNumber = __webpack_require__(175);
+	var YouClicked = __webpack_require__(176);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
@@ -21464,8 +21465,7 @@
 	      React.createElement(
 	        Layout,
 	        null,
-	        React.createElement(GuessTheNumber, { numberToGuess: 50 }),
-	        React.createElement('br', null)
+	        React.createElement(YouClicked, null)
 	      )
 	    );
 	  }
@@ -21592,6 +21592,90 @@
 	});
 	
 	module.exports = GuessTheNumber;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var YouClicked = React.createClass({
+		displayName: 'YouClicked',
+	
+		getInitialState: function getInitialState() {
+			return {
+				timesClicked: 0,
+				timesClickedText: 'You never clicked the button',
+				timesReset: 0,
+				timesResetText: 'You never clicked reset'
+			};
+		},
+		_handleButtonClick: function _handleButtonClick() {
+			var click = this.state.timesClicked + 1;
+			var clickText = this.state.timesClickedText;
+			if (click == 1) {
+				clickText = 'You clicked the button once';
+			} else if (click == 2) {
+				clickText = 'You clicked the button twice';
+			} else {
+				clickText = 'You clicked the button ' + click + ' time';
+			}
+	
+			this.setState({
+				timesClicked: click,
+				timesClickedText: clickText
+	
+			});
+		},
+		_handleButtonReset: function _handleButtonReset() {
+			var reset = this.state.timesReset + 1;
+			var resetText = this.state.timesResetText;
+			if (reset == 1) {
+				resetText = 'You clicked reset once';
+			} else if (reset == 2) {
+				resetText = 'You clicked reset twice';
+			} else {
+				resetText = 'You clicked reset ' + reset + ' times';
+			}
+	
+			this.setState({
+				timesClicked: 0,
+				timesClickedText: 'You never clicked the button',
+				timesReset: reset,
+				timesResetText: resetText
+			});
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'button',
+					{ onClick: this._handleButtonClick },
+					'Click me'
+				),
+				React.createElement(
+					'button',
+					{ onClick: this._handleButtonReset },
+					'Reset me'
+				),
+				React.createElement(
+					'p',
+					null,
+					this.state.timesClickedText
+				),
+				React.createElement(
+					'p',
+					null,
+					this.state.timesResetText
+				)
+			);
+		}
+	});
+	
+	module.exports = YouClicked;
 
 /***/ }
 /******/ ]);
