@@ -13,13 +13,13 @@ const YouClicked = React.createClass({
 		let click= this.state.timesClicked +1;
 		let clickText = this.state.timesClickedText;
 		if (click == 1) {
-			 clickText= 'You clicked the button once'
+			 clickText = 'You clicked the button once'
 		}
 		else if (click == 2) {
-			clickText= 'You clicked the button twice'
+			clickText = 'You clicked the button twice'
 		}
 		else {
-			clickText= `You clicked the button ${click} time`
+			clickText = `You clicked the button ${click} time`
 		}
 		
 		this.setState({
@@ -32,7 +32,7 @@ const YouClicked = React.createClass({
 		let reset = this.state.timesReset +1;
 		let resetText = this.state.timesResetText;
 		if (reset == 1) {
-			resetText= 'You clicked reset once'
+			resetText = 'You clicked reset once'
 		}
 		else if (reset == 2) {
 			resetText = 'You clicked reset twice'

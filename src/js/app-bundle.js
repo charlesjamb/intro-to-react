@@ -21432,6 +21432,7 @@
 	var Layout = __webpack_require__(174);
 	var GuessTheNumber = __webpack_require__(175);
 	var YouClicked = __webpack_require__(176);
+	var CharacterCounter = __webpack_require__(177);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
@@ -21465,7 +21466,7 @@
 	      React.createElement(
 	        Layout,
 	        null,
-	        React.createElement(YouClicked, null)
+	        React.createElement(CharacterCounter, null)
 	      )
 	    );
 	  }
@@ -21676,6 +21677,60 @@
 	});
 	
 	module.exports = YouClicked;
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var CharacterCounter = React.createClass({
+		displayName: 'CharacterCounter',
+	
+		getInitialState: function getInitialState() {
+			return {
+				currentInput: '',
+				currentInputText: 'Your input has no character'
+			};
+		},
+		_handleInput: function _handleInput(event) {
+			var value = event.target.value;
+			var valueText = this.state.currentInputText;
+			if (value.length == 1) {
+				valueText = 'Your input has one character';
+			} else if (value.length == 0) {
+				valueText = 'Your input has no character';
+			} else {
+				valueText = 'Your input has ' + value.length + ' characters';
+			}
+	
+			this.setState({
+				currentInput: value,
+				currentInputText: valueText
+			});
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h2',
+					null,
+					'Character Counter'
+				),
+				React.createElement('input', { onInput: this._handleInput }),
+				React.createElement(
+					'p',
+					null,
+					this.state.currentInputText
+				)
+			);
+		}
+	});
+	
+	module.exports = CharacterCounter;
 
 /***/ }
 /******/ ]);
