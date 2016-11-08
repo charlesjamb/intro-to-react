@@ -25,7 +25,6 @@ const YouClicked = React.createClass({
 		this.setState({
 			timesClicked: click,
 			timesClickedText: clickText
-
 		});
 	},
 	_handleButtonReset: function() {

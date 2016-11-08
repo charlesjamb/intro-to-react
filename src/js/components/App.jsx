@@ -5,6 +5,7 @@ const Layout = require('./Layout');
 const GuessTheNumber = require('./GuessTheNumber');
 const YouClicked = require('./YouClicked');
 const CharacterCounter = require('./CharacterCounter');
+const CharacterLimit = require('./CharacterLimit');
 
 let imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -27,7 +28,7 @@ const App = React.createClass({
         <hr/>
         <h2>Testing Layout</h2>
         <Layout>
-        	<CharacterCounter/>
+        	<CharacterLimit limit={140}/>
         </Layout>
       </main>
     );

@@ -21433,6 +21433,7 @@
 	var GuessTheNumber = __webpack_require__(175);
 	var YouClicked = __webpack_require__(176);
 	var CharacterCounter = __webpack_require__(177);
+	var CharacterLimit = __webpack_require__(178);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
@@ -21466,7 +21467,7 @@
 	      React.createElement(
 	        Layout,
 	        null,
-	        React.createElement(CharacterCounter, null)
+	        React.createElement(CharacterLimit, { limit: 140 })
 	      )
 	    );
 	  }
@@ -21627,7 +21628,6 @@
 			this.setState({
 				timesClicked: click,
 				timesClickedText: clickText
-	
 			});
 		},
 		_handleButtonReset: function _handleButtonReset() {
@@ -21691,7 +21691,7 @@
 	
 		getInitialState: function getInitialState() {
 			return {
-				currentInput: '',
+				currentInput: 0,
 				currentInputText: 'Your input has no character'
 			};
 		},
@@ -21707,7 +21707,7 @@
 			}
 	
 			this.setState({
-				currentInput: value,
+				currentInput: value.length,
 				currentInputText: valueText
 			});
 		},
@@ -21731,6 +21731,56 @@
 	});
 	
 	module.exports = CharacterCounter;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var CharacterLimit = React.createClass({
+		displayName: 'CharacterLimit',
+	
+		propTypes: {
+			limit: React.PropTypes.number.isRequired
+		},
+		getInitialState: function getInitialState() {
+			return {
+				currentInput: ''
+			};
+		},
+		_handleInput: function _handleInput(event) {
+			var value = event.target.value;
+	
+			if (value.length <= this.props.limit) {
+				this.setState({
+					currentInput: value
+				});
+			}
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h2',
+					null,
+					'Character Limit'
+				),
+				React.createElement('input', { onInput: this._handleInput, value: this.state.currentInput }),
+				React.createElement(
+					'p',
+					null,
+					'Characters remaining: ',
+					this.props.limit - this.state.currentInput.length
+				)
+			);
+		}
+	});
+	
+	module.exports = CharacterLimit;
 
 /***/ }
 /******/ ]);

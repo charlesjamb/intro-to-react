@@ -3,7 +3,7 @@ const React = require('react');
 const CharacterCounter = React.createClass({
 	getInitialState: function() {
 		return {
-			currentInput: '',
+			currentInput: 0,
 			currentInputText: 'Your input has no character'
 		}
 	},
@@ -21,7 +21,7 @@ const CharacterCounter = React.createClass({
 		}
 
 		this.setState({
-			currentInput: value,
+			currentInput: value.length,
 			currentInputText: valueText
 		});
 	},
