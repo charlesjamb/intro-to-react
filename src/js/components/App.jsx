@@ -3,6 +3,7 @@ const React = require('react');
 const ImageCaption = require('./ImageCaption');
 const Layout = require('./Layout');
 const GuessTheNumber = require('./GuessTheNumber');
+const GuessTheNumberV2 = require('./GuessTheNumberV2');
 const YouClicked = require('./YouClicked');
 const CharacterCounter = require('./CharacterCounter');
 const CharacterLimit = require('./CharacterLimit');
@@ -28,7 +29,7 @@ const App = React.createClass({
         <hr/>
         <h2>Testing Layout</h2>
         <Layout>
-        	<CharacterLimit limit={140}/>
+        	<GuessTheNumberV2/>
         </Layout>
       </main>
     );
