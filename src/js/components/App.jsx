@@ -7,6 +7,7 @@ const GuessTheNumberV2 = require('./GuessTheNumberV2');
 const YouClicked = require('./YouClicked');
 const CharacterCounter = require('./CharacterCounter');
 const CharacterLimit = require('./CharacterLimit');
+const GithubProfile = require('./GithubProfile');
 
 let imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -27,9 +28,8 @@ const App = React.createClass({
       <main>
         <h1>My first React App</h1>
         <hr/>
-        <h2>Testing Layout</h2>
         <Layout>
-        	<GuessTheNumberV2/>
+        	<GithubProfile username='charlesjamb'/>
         </Layout>
       </main>
     );
