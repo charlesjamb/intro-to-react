@@ -1,5 +1,7 @@
+// Libraries
 const React = require('react');
 
+///////////////////////////////////////////////////////////////////////////////
 const GuessTheNumberV2 = React.createClass({
 	getInitialState: function() {
 		return {}
@@ -21,7 +23,7 @@ const GuessTheNumberV2 = React.createClass({
 		let guessLeft = this.state.limit - 1;
 
 		this.setState({
-			guesses: this.state.guesses.concat(numGuessed, ' '),
+			guesses: this.state.guesses.concat(numGuessed),
 			limit: guessLeft
 		})
 

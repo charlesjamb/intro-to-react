@@ -1,5 +1,7 @@
+// Libraries
 const React = require('react');
 
+///////////////////////////////////////////////////////////////////////////////
 const GuessTheNumber = React.createClass({
 	propTypes: {
 		numberToGuess: React.PropTypes.number.isRequired

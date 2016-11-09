@@ -1,27 +1,26 @@
+// Libraries
 const React = require('react');
 
-const ImageCaption = require('./ImageCaption');
+// Components
 const Layout = require('./Layout');
+
+const ImageCaption = require('./ImageCaption');
+
 const GuessTheNumber = require('./GuessTheNumber');
 const GuessTheNumberV2 = require('./GuessTheNumberV2');
 const YouClicked = require('./YouClicked');
+
 const CharacterCounter = require('./CharacterCounter');
 const CharacterLimit = require('./CharacterLimit');
+
 const GithubProfile = require('./GithubProfile');
+const GithubSearch = require('./GithubSearch');
+const GithubSearchForm = require('./GithubSearchForm');
 
-let imageList = [
-  {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
-  {id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo"},
-  {id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!"}
-];
-
+///////////////////////////////////////////////////////////////////////////////
 const App = React.createClass({
-  _renderImage: function(arr) {
-	return (<div>
-	{
-		arr.map(item => <ImageCaption key={item.id} source={item.source} text={item.text}/>)
-	}
-	</div>);
+  _renderImage: function(imgObj) {
+		return <ImageCaption key={imgObj.id} source={imgObj.source} text={imgObj.text}/>
   },
   render: function() {
     return (
@@ -29,7 +28,7 @@ const App = React.createClass({
         <h1>My first React App</h1>
         <hr/>
         <Layout>
-        	<GithubProfile username='charlesjamb'/>
+        	<GithubSearch/>
         </Layout>
       </main>
     );

@@ -1,5 +1,41 @@
 .layout {
-	border: 1px solid lightblue;
+	border: 1px solid darkblue;
 	margin: 20px;
 	padding: 20px;
 }
+
+.sub-nav {
+	list-style: none;
+}
+
+.search-form {
+	padding: 20px;
+	margin: 20px;
+	border: 1px solid lightblue;
+}
+
+.github-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid lightblue;
+	margin: 0 auto;
+	padding: 20px;
+	margin: 20px;
+}
+
+.github-user-avatar {
+	border-radius: 50%;
+	width: 150px;
+	height: auto;
+}
+
+.github-user-info {
+	padding: 20px;
+	margin: 20px;
+}
+
+footer {
+	font-size: 0.5em;
+}
+

@@ -46,11 +46,14 @@
 
 	'use strict';
 	
+	//Libraries
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 	
+	// Components
 	var App = __webpack_require__(172);
 	
+	///////////////////////////////////////////////////////////////////////////////
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
 /***/ },
@@ -21426,30 +21429,31 @@
 
 	'use strict';
 	
+	// Libraries
 	var React = __webpack_require__(1);
 	
-	var ImageCaption = __webpack_require__(173);
+	// Components
 	var Layout = __webpack_require__(174);
+	
+	var ImageCaption = __webpack_require__(173);
+	
 	var GuessTheNumber = __webpack_require__(175);
-	var GuessTheNumberV2 = __webpack_require__(179);
-	var YouClicked = __webpack_require__(176);
-	var CharacterCounter = __webpack_require__(177);
-	var CharacterLimit = __webpack_require__(178);
+	var GuessTheNumberV2 = __webpack_require__(176);
+	var YouClicked = __webpack_require__(177);
+	
+	var CharacterCounter = __webpack_require__(178);
+	var CharacterLimit = __webpack_require__(179);
+	
 	var GithubProfile = __webpack_require__(180);
+	var GithubSearch = __webpack_require__(182);
+	var GithubSearchForm = __webpack_require__(183);
 	
-	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
-	
+	///////////////////////////////////////////////////////////////////////////////
 	var App = React.createClass({
 	  displayName: 'App',
 	
-	  _renderImage: function _renderImage(arr) {
-	    return React.createElement(
-	      'div',
-	      null,
-	      arr.map(function (item) {
-	        return React.createElement(ImageCaption, { key: item.id, source: item.source, text: item.text });
-	      })
-	    );
+	  _renderImage: function _renderImage(imgObj) {
+	    return React.createElement(ImageCaption, { key: imgObj.id, source: imgObj.source, text: imgObj.text });
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -21464,7 +21468,7 @@
 	      React.createElement(
 	        Layout,
 	        null,
-	        React.createElement(GithubProfile, { username: 'charlesjamb' })
+	        React.createElement(GithubSearch, null)
 	      )
 	    );
 	  }
@@ -21476,12 +21480,16 @@
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	
+	///////////////////////////////////////////////////////////////////////////////
+	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
+	
+	///////////////////////////////////////////////////////////////////////////////
 	var ImageCaption = React.createClass({
-		displayName: 'ImageCaption',
+		displayName: "ImageCaption",
 	
 		propTypes: {
 			source: React.PropTypes.string.isRequired,
@@ -21489,11 +21497,11 @@
 		},
 		render: function render() {
 			return React.createElement(
-				'figure',
+				"figure",
 				null,
-				React.createElement('img', { key: this.props.id, src: this.props.source }),
+				React.createElement("img", { key: this.props.id, src: this.props.source }),
 				React.createElement(
-					'figcaption',
+					"figcaption",
 					null,
 					this.props.text
 				)
@@ -21509,8 +21517,10 @@
 
 	"use strict";
 	
+	// Libraries
 	var React = __webpack_require__(1);
 	
+	///////////////////////////////////////////////////////////////////////////////
 	var Layout = React.createClass({
 		displayName: "Layout",
 	
@@ -21523,14 +21533,14 @@
 					{ className: "main-nav" },
 					React.createElement(
 						"ul",
-						null,
+						{ className: "sub-nav" },
 						React.createElement(
 							"li",
 							null,
 							React.createElement(
 								"a",
 								{ href: "/" },
-								"Home"
+								"Reload"
 							)
 						)
 					)
@@ -21543,7 +21553,7 @@
 				React.createElement(
 					"footer",
 					null,
-					"Copywhat 2016 Kittens"
+					"Copywhat 2016"
 				)
 			);
 		}
@@ -21557,8 +21567,10 @@
 
 	'use strict';
 	
+	// Libraries
 	var React = __webpack_require__(1);
 	
+	///////////////////////////////////////////////////////////////////////////////
 	var GuessTheNumber = React.createClass({
 		displayName: 'GuessTheNumber',
 	
@@ -21598,195 +21610,10 @@
 
 	'use strict';
 	
+	// Libraries
 	var React = __webpack_require__(1);
 	
-	var YouClicked = React.createClass({
-		displayName: 'YouClicked',
-	
-		getInitialState: function getInitialState() {
-			return {
-				timesClicked: 0,
-				timesClickedText: 'You never clicked the button',
-				timesReset: 0,
-				timesResetText: 'You never clicked reset'
-			};
-		},
-		_handleButtonClick: function _handleButtonClick() {
-			var click = this.state.timesClicked + 1;
-			var clickText = this.state.timesClickedText;
-			if (click == 1) {
-				clickText = 'You clicked the button once';
-			} else if (click == 2) {
-				clickText = 'You clicked the button twice';
-			} else {
-				clickText = 'You clicked the button ' + click + ' time';
-			}
-	
-			this.setState({
-				timesClicked: click,
-				timesClickedText: clickText
-			});
-		},
-		_handleButtonReset: function _handleButtonReset() {
-			var reset = this.state.timesReset + 1;
-			var resetText = this.state.timesResetText;
-			if (reset == 1) {
-				resetText = 'You clicked reset once';
-			} else if (reset == 2) {
-				resetText = 'You clicked reset twice';
-			} else {
-				resetText = 'You clicked reset ' + reset + ' times';
-			}
-	
-			this.setState({
-				timesClicked: 0,
-				timesClickedText: 'You never clicked the button',
-				timesReset: reset,
-				timesResetText: resetText
-			});
-		},
-		render: function render() {
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'button',
-					{ onClick: this._handleButtonClick },
-					'Click me'
-				),
-				React.createElement(
-					'button',
-					{ onClick: this._handleButtonReset },
-					'Reset me'
-				),
-				React.createElement(
-					'p',
-					null,
-					this.state.timesClickedText
-				),
-				React.createElement(
-					'p',
-					null,
-					this.state.timesResetText
-				)
-			);
-		}
-	});
-	
-	module.exports = YouClicked;
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var CharacterCounter = React.createClass({
-		displayName: 'CharacterCounter',
-	
-		getInitialState: function getInitialState() {
-			return {
-				currentInput: 0,
-				currentInputText: 'Your input has no character'
-			};
-		},
-		_handleInput: function _handleInput(event) {
-			var value = event.target.value;
-			var valueText = this.state.currentInputText;
-			if (value.length == 1) {
-				valueText = 'Your input has one character';
-			} else if (value.length == 0) {
-				valueText = 'Your input has no character';
-			} else {
-				valueText = 'Your input has ' + value.length + ' characters';
-			}
-	
-			this.setState({
-				currentInput: value.length,
-				currentInputText: valueText
-			});
-		},
-		render: function render() {
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'h2',
-					null,
-					'Character Counter'
-				),
-				React.createElement('input', { onInput: this._handleInput }),
-				React.createElement(
-					'p',
-					null,
-					this.state.currentInputText
-				)
-			);
-		}
-	});
-	
-	module.exports = CharacterCounter;
-
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var CharacterLimit = React.createClass({
-		displayName: 'CharacterLimit',
-	
-		propTypes: {
-			limit: React.PropTypes.number.isRequired
-		},
-		getInitialState: function getInitialState() {
-			return {
-				currentInput: ''
-			};
-		},
-		_handleInput: function _handleInput(event) {
-			var value = event.target.value;
-	
-			if (value.length <= this.props.limit) {
-				this.setState({
-					currentInput: value
-				});
-			}
-		},
-		render: function render() {
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'h2',
-					null,
-					'Character Limit'
-				),
-				React.createElement('input', { onInput: this._handleInput, value: this.state.currentInput }),
-				React.createElement(
-					'p',
-					null,
-					'Characters remaining: ',
-					this.props.limit - this.state.currentInput.length
-				)
-			);
-		}
-	});
-	
-	module.exports = CharacterLimit;
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
+	///////////////////////////////////////////////////////////////////////////////
 	var GuessTheNumberV2 = React.createClass({
 		displayName: 'GuessTheNumberV2',
 	
@@ -21810,7 +21637,7 @@
 			var guessLeft = this.state.limit - 1;
 	
 			this.setState({
-				guesses: this.state.guesses.concat(numGuessed, ' '),
+				guesses: this.state.guesses.concat(numGuessed),
 				limit: guessLeft
 			});
 	
@@ -21891,14 +21718,209 @@
 	module.exports = GuessTheNumberV2;
 
 /***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// Libraries
+	var React = __webpack_require__(1);
+	
+	///////////////////////////////////////////////////////////////////////////////
+	var YouClicked = React.createClass({
+		displayName: 'YouClicked',
+	
+		getInitialState: function getInitialState() {
+			return {
+				timesClicked: 0,
+				timesClickedText: 'You never clicked the button',
+				timesReset: 0,
+				timesResetText: 'You never clicked reset'
+			};
+		},
+		_handleButtonClick: function _handleButtonClick() {
+			var click = this.state.timesClicked + 1;
+			var clickText = this.state.timesClickedText;
+			if (click == 1) {
+				clickText = 'You clicked the button once';
+			} else if (click == 2) {
+				clickText = 'You clicked the button twice';
+			} else {
+				clickText = 'You clicked the button ' + click + ' time';
+			}
+	
+			this.setState({
+				timesClicked: click,
+				timesClickedText: clickText
+			});
+		},
+		_handleButtonReset: function _handleButtonReset() {
+			var reset = this.state.timesReset + 1;
+			var resetText = this.state.timesResetText;
+			if (reset == 1) {
+				resetText = 'You clicked reset once';
+			} else if (reset == 2) {
+				resetText = 'You clicked reset twice';
+			} else {
+				resetText = 'You clicked reset ' + reset + ' times';
+			}
+	
+			this.setState({
+				timesClicked: 0,
+				timesClickedText: 'You never clicked the button',
+				timesReset: reset,
+				timesResetText: resetText
+			});
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'button',
+					{ onClick: this._handleButtonClick },
+					'Click me'
+				),
+				React.createElement(
+					'button',
+					{ onClick: this._handleButtonReset },
+					'Reset me'
+				),
+				React.createElement(
+					'p',
+					null,
+					this.state.timesClickedText
+				),
+				React.createElement(
+					'p',
+					null,
+					this.state.timesResetText
+				)
+			);
+		}
+	});
+	
+	module.exports = YouClicked;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// Libraries
+	var React = __webpack_require__(1);
+	
+	///////////////////////////////////////////////////////////////////////////////
+	var CharacterCounter = React.createClass({
+		displayName: 'CharacterCounter',
+	
+		getInitialState: function getInitialState() {
+			return {
+				currentInput: 0,
+				currentInputText: 'Your input has no character'
+			};
+		},
+		_handleInput: function _handleInput(event) {
+			var value = event.target.value;
+			var valueText = this.state.currentInputText;
+			if (value.length == 1) {
+				valueText = 'Your input has one character';
+			} else if (value.length == 0) {
+				valueText = 'Your input has no character';
+			} else {
+				valueText = 'Your input has ' + value.length + ' characters';
+			}
+	
+			this.setState({
+				currentInput: value.length,
+				currentInputText: valueText
+			});
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h2',
+					null,
+					'Character Counter'
+				),
+				React.createElement('input', { onInput: this._handleInput }),
+				React.createElement(
+					'p',
+					null,
+					this.state.currentInputText
+				)
+			);
+		}
+	});
+	
+	module.exports = CharacterCounter;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// Libraries
+	var React = __webpack_require__(1);
+	
+	///////////////////////////////////////////////////////////////////////////////
+	var CharacterLimit = React.createClass({
+		displayName: 'CharacterLimit',
+	
+		propTypes: {
+			limit: React.PropTypes.number.isRequired
+		},
+		getInitialState: function getInitialState() {
+			return {
+				currentInput: ''
+			};
+		},
+		_handleInput: function _handleInput(event) {
+			var value = event.target.value;
+	
+			if (value.length <= this.props.limit) {
+				this.setState({
+					currentInput: value
+				});
+			}
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h2',
+					null,
+					'Character Limit'
+				),
+				React.createElement('input', { onInput: this._handleInput, value: this.state.currentInput }),
+				React.createElement(
+					'p',
+					null,
+					'Characters remaining: ',
+					this.props.limit - this.state.currentInput.length
+				)
+			);
+		}
+	});
+	
+	module.exports = CharacterLimit;
+
+/***/ },
 /* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
+	// Libraries
 	var React = __webpack_require__(1);
 	var $ = __webpack_require__(181);
 	
+	///////////////////////////////////////////////////////////////////////////////
 	var GithubProfile = React.createClass({
 		displayName: 'GithubProfile',
 	
@@ -21909,6 +21931,14 @@
 			return {};
 		},
 		componentDidMount: function componentDidMount() {
+			this.fetchData();
+		},
+		componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+			if (prevProps.username !== this.state.username) {
+				this.fetchData();
+			}
+		},
+		fetchData: function fetchData() {
 			var _this = this;
 	
 			$.getJSON('https://api.github.com/users/' + this.props.username, function (data) {
@@ -21924,10 +21954,10 @@
 			return React.createElement(
 				'div',
 				{ className: 'github-user' },
-				React.createElement('img', { className: 'github-user__avatar', src: this.state.avatarUrl }),
+				React.createElement('img', { className: 'github-user-avatar', src: this.state.avatarUrl }),
 				React.createElement(
 					'div',
-					{ className: 'github-user__info' },
+					{ className: 'github-user-info' },
 					React.createElement(
 						'p',
 						null,
@@ -32173,6 +32203,86 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// Libraries
+	var React = __webpack_require__(1);
+	
+	// Components
+	var GithubProfile = __webpack_require__(180);
+	var GithubSearchForm = __webpack_require__(183);
+	
+	///////////////////////////////////////////////////////////////////////////////
+	var GithubSearch = React.createClass({
+	  displayName: 'GithubSearch',
+	
+	  getInitialState: function getInitialState() {
+	    return {};
+	  },
+	  _handleSearch: function _handleSearch(searchTerm) {
+	    // console.log(searchTerm);
+	    this.setState({
+	      user: searchTerm
+	    });
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(GithubSearchForm, { onSearch: this._handleSearch }),
+	      this.state.user ? React.createElement(GithubProfile, { username: this.state.user }) : null
+	    );
+	  }
+	});
+	
+	module.exports = GithubSearch;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	// Libraries
+	var React = __webpack_require__(1);
+	
+	///////////////////////////////////////////////////////////////////////////////
+	var GithubSearchForm = React.createClass({
+	  displayName: "GithubSearchForm",
+	
+	  propTypes: {
+	    onSearch: React.PropTypes.func
+	  },
+	  _handleSubmit: function _handleSubmit(e) {
+	    e.preventDefault();
+	    var input = this.refs.userInput.value;
+	    this.props.onSearch(input);
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      "form",
+	      { className: "search-form", onSubmit: this._handleSubmit },
+	      React.createElement(
+	        "p",
+	        null,
+	        "Enter a GitHub username:"
+	      ),
+	      React.createElement("input", { type: "text", ref: "userInput" }),
+	      React.createElement(
+	        "button",
+	        null,
+	        "Go!"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = GithubSearchForm;
 
 /***/ }
 /******/ ]);

@@ -1,5 +1,7 @@
+// Libraries
 const React = require('react');
 
+///////////////////////////////////////////////////////////////////////////////
 const CharacterLimit = React.createClass({
 	propTypes: {
 		limit: React.PropTypes.number.isRequired

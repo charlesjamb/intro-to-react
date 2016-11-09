@@ -1,5 +1,7 @@
+// Libraries
 const React = require('react');
 
+///////////////////////////////////////////////////////////////////////////////
 const CharacterCounter = React.createClass({
 	getInitialState: function() {
 		return {
